@@ -10,21 +10,31 @@ class SearchPage extends StatelessWidget {
 
   SearchPage({Key key}) : super(key: key);
 
+  Widget _buildPage(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        CupertinoNavigationBar(
+          backgroundColor: Color(0),
+          previousPageTitle: '返回',
+          middle: Text('搜索', style: TextStyle(fontSize: 16, color: Color(0xFFFFCD32))),
+          border: Border.all(style: BorderStyle.none),
+        ),
+        Container(
+          color: CupertinoColors.activeGreen,
+          child: CupertinoTextField(
+            placeholder: '测试',
+            textInputAction: TextInputAction.send,
+          ),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      backgroundColor: Color(0xFF202020),
-      navigationBar: CupertinoNavigationBar(
-        backgroundColor: Color(0),
-        previousPageTitle: '返回',
-        middle: Text('搜索', style: TextStyle(fontSize: 16, color: Color(0xFFFFCD32))),
-        border: Border.all(style: BorderStyle.none),
-      ),
-      child: Container(
-        child: Center(
-          child: Text('搜索页', style: TextStyle(fontSize: 20, color: CupertinoColors.white)),
-        ),
-      ),
+    return Container(
+      color: Color(0xFF202020),
+      child: _buildPage(context),
     );
   }
 }
